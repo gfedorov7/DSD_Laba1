@@ -17,7 +17,7 @@ int main() {
     std::cout << "Создано множество A - ";
     Set* set = create(count, startValue, endValue);
     std::cout << "Мощность множества А - " << calculatePower(set) << std::endl;
-    std::cout << "Вывод множества A - " << out(set, ",") << std::endl;
+    std::cout << "Вывод множества A - " << out(set, ",") << std::  endl;
     set = clear(set);
     std::cout << "Мощность множества А - " << calculatePower(set) << std::endl;
     std::cout << "Вывод множества A - " << out(set, ",") << std::endl;
