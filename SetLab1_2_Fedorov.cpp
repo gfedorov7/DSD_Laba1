@@ -42,7 +42,8 @@ Set* add(Set* firstElement, int value) {
 
 Set* create(int count, int min, int max) {
     if (count > (max - min + 1)) {
-        std::cout << "Невозможно в этом диапазоне создать уникальное множество" << std::endl;
+        // пишу на английском тк почему-то ломается кодировка при выводе в консоль, в main все нормально
+        std::cout << "Cannot create in this range" << std::endl;
         return nullptr;
     }
 
