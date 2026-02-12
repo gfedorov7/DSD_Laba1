@@ -13,6 +13,11 @@ int main() {
     int count = min + std::rand() % (max - min + 1);
     int startValue = minValue + std::rand() % (maxValue - minValue + 1);
     int endValue = minValue + std::rand() % (maxValue - minValue + 1);
+    if (startValue > endValue) {
+        int temp = endValue;
+        endValue = startValue;
+        startValue = temp;
+    }
 
     std::cout << "Создано множество A - ";
     Set* set = create(count, startValue, endValue);
