@@ -9,7 +9,7 @@
 
 
 Set* createEmpty() {
-    return new Set(0, nullptr);
+    return nullptr;
 }
 
 bool isEmpty(Set* firstElement) {
@@ -34,7 +34,7 @@ Set* add(Set* firstElement, int value) {
     if (containsElement(firstElement, value))
         return firstElement;
 
-    Set* newSet = createEmpty();
+    Set* newSet = new Set();
     newSet->value = value;
     newSet->next = firstElement;
     return newSet;
