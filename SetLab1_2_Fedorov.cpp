@@ -92,13 +92,12 @@ std::string out(Set* firstElement, const std::string& delimiter) {
     Set* current = firstElement;
     while (current != nullptr)
     {
-        outString += std::to_string(current->value);
-
-        if (current->next != nullptr)
-            outString += delimiter;
-
+        outString += std::to_string(current->value) + delimiter;
         current = current->next;
     }
+
+    if (outString.length() > delimiter.length())
+        outString.erase(outString.length() - delimiter.length());
 
     return outString;
 }

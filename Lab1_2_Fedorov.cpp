@@ -7,7 +7,7 @@ int main() {
     setlocale(LC_ALL, "Russian");
 
     int min = 6, max = 9;
-    int minValue = 1, maxValue = 10000;
+    int minValue = 10, maxValue = 100;
 
     std::srand(std::time(nullptr));
     int count = min + std::rand() % (max - min + 1);
