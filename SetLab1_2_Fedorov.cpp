@@ -54,11 +54,19 @@ Set* F5_create(int count, int min, int max, SetType type) {
     }
 
     int step = (type == SET_A) ? 2 : 6;
+
+    if (min > max) {
+        max = min + step * 10;
+    }
+
     int possible = (max - min) / step + 1;
 
-    if (possible <= 0 || count > possible) {
-        std::cout << "Cannot create set in this range" << std::endl;
-        return nullptr;
+    if (count > possible) {
+        count = possible;
+    }
+
+    if (count <= 0) {
+        count = 1;
     }
 
     while (currentCount < count) {
@@ -73,7 +81,6 @@ Set* F5_create(int count, int min, int max, SetType type) {
 
     return set;
 }
-
 int F6_calculatePower(Set* firstElement)
 {
     if (F2_isEmpty(firstElement))
