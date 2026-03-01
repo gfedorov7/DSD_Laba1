@@ -19,13 +19,13 @@ int main() {
         endValue = temp;
     }
 
-    Set* A = F5_create(count, startValue, endValue);
-    Set* B = F5_create(count, startValue, endValue);
+    Set* A = F5_createEven(count, startValue, endValue);
+    Set* B = F5_createMultipleOf6(count, startValue, endValue);
 
-    std::cout << "Создано множество A - " << std::endl;
+    std::cout << "Создано множество A" << std::endl;
     std::cout << "Вывод множества A - " << F7_out(A, " ") << std::endl;
 
-    std::cout << "Создано множество B - " << std::endl;
+    std::cout << "Создано множество B" << std::endl;
     std::cout << "Вывод множества B - " << F7_out(B, " ") << std::endl;
 
     std::cout << "Является ли A подмножеством B: " << F9_isSubset(A, B) << std::endl;
