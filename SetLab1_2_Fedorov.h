@@ -11,13 +11,13 @@ struct Set {
     Set* next;
 };
 
-Set* createEmpty();
-bool isEmpty(Set* firstElement);
-bool containsElement(Set* firstElement, int value);
-Set* add(Set* firstElement, int value);
-Set* create(int count, int min, int max);
-int calculatePower(Set* firstElement);
-std::string out(Set* firstElement, const std::string& delimiter);
-Set* clear(Set* firstElement);
+Set* F1_createEmpty();
+bool F2_isEmpty(Set* firstElement);
+bool F3_containsElement(Set* firstElement, int value);
+Set* F4_add(Set* firstElement, int value);
+Set* F5_create(int count, int min, int max);
+int F6_calculatePower(Set* firstElement);
+std::string F7_out(Set* firstElement, const std::string& delimiter);
+Set* F8_clear(Set* firstElement);
 
 #endif //DSD_LABA1_SETLAB1_2_FEDOROV_H

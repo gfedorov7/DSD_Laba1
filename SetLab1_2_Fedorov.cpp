@@ -8,16 +8,16 @@
 #include "SetLab1_2_Fedorov.h"
 
 
-Set* createEmpty() {
+Set* F1_createEmpty() {
     return nullptr;
 }
 
-bool isEmpty(Set* firstElement) {
+bool F2_isEmpty(Set* firstElement) {
     return firstElement == nullptr;
 }
 
-bool containsElement(Set* firstElement, int value) {
-    if (isEmpty(firstElement))
+bool F3_containsElement(Set* firstElement, int value) {
+    if (F2_isEmpty(firstElement))
         return false;
 
     Set* current = firstElement;
@@ -30,8 +30,8 @@ bool containsElement(Set* firstElement, int value) {
     return false;
 }
 
-Set* add(Set* firstElement, int value) {
-    if (containsElement(firstElement, value))
+Set* F4_add(Set* firstElement, int value) {
+    if (F3_containsElement(firstElement, value))
         return firstElement;
 
     Set* newSet = new Set();
@@ -40,7 +40,7 @@ Set* add(Set* firstElement, int value) {
     return newSet;
 }
 
-Set* create(int count, int min, int max) {
+Set* F5_create(int count, int min, int max) {
     if (count > (max - min + 1)) {
         // пишу на английском тк почему-то ломается кодировка при выводе в консоль, в main все нормально
         std::cout << "Cannot create in this range" << std::endl;
@@ -55,7 +55,7 @@ Set* create(int count, int min, int max) {
     {
         int value = min + std::rand() % (max - min + 1);
 
-        Set* temp = add(set, value);
+        Set* temp = F4_add(set, value);
         if (temp != set) {
             set = temp;
             currentCount++;
@@ -67,9 +67,9 @@ Set* create(int count, int min, int max) {
     return set;
 }
 
-int calculatePower(Set* firstElement)
+int F6_calculatePower(Set* firstElement)
 {
-    if (isEmpty(firstElement))
+    if (F2_isEmpty(firstElement))
         return 0;
 
     int power = 0;
@@ -83,10 +83,10 @@ int calculatePower(Set* firstElement)
     return power;
 }
 
-std::string out(Set* firstElement, const std::string& delimiter) {
+std::string F7_out(Set* firstElement, const std::string& delimiter) {
     std::string outString;
 
-    if (isEmpty(firstElement))
+    if (F2_isEmpty(firstElement))
         return outString;
 
     Set* current = firstElement;
@@ -102,8 +102,8 @@ std::string out(Set* firstElement, const std::string& delimiter) {
     return outString;
 }
 
-Set* clear(Set* firstElement) {
-    if (isEmpty(firstElement))
+Set* F8_clear(Set* firstElement) {
+    if (F2_isEmpty(firstElement))
         return firstElement;
 
     Set* current = firstElement;
