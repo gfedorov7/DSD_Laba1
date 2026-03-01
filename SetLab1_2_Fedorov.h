@@ -11,13 +11,16 @@ struct Set {
     Set* next;
 };
 
+enum SetType {
+    SET_A,
+    SET_B
+};
+
 Set* F1_createEmpty();
 bool F2_isEmpty(Set* firstElement);
 bool F3_containsElement(Set* firstElement, int value);
 Set* F4_add(Set* firstElement, int value);
-Set* F5_createMultipleOf6(int count, int min, int max);
-Set* F5_createEven(int count, int min, int max);
-Set* F5_create(int count, int min, int max);
+Set* F5_create(int count, int min, int max, SetType type);
 int F6_calculatePower(Set* firstElement);
 std::string F7_out(Set* firstElement, const std::string& delimiter);
 Set* F8_clear(Set* firstElement);

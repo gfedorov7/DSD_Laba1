@@ -19,8 +19,8 @@ int main() {
         endValue = temp;
     }
 
-    Set* A = F5_createEven(count, startValue, endValue);
-    Set* B = F5_createMultipleOf6(count, startValue, endValue);
+    Set* A = F5_create(count, startValue, endValue, SET_A);
+    Set* B = F5_create(count, startValue, endValue, SET_B);
 
     std::cout << "Создано множество A" << std::endl;
     std::cout << "Вывод множества A - " << F7_out(A, " ") << std::endl;

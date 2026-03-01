@@ -40,69 +40,30 @@ Set* F4_add(Set* firstElement, int value) {
     return newSet;
 }
 
-Set* F5_create(int count, int min, int max) {
-    if (count > (max - min + 1)) {
-        // пишу на английском тк почему-то ломается кодировка при выводе в консоль, в main все нормально
-        std::cout << "Cannot create in this range" << std::endl;
-        return nullptr;
-    }
-
+Set* F5_create(int count, int min, int max, SetType type) {
     Set* set = nullptr;
     int currentCount = 0;
 
-    while (currentCount < count)
-    {
-        int value = min + std::rand() % (max - min + 1);
-
-        Set* temp = F4_add(set, value);
-        if (temp != set) {
-            set = temp;
-            currentCount++;
-        }
+    if (type == SET_A) {
+        if (min % 2 != 0) min++;
+        if (max % 2 != 0) max--;
+    }
+    else if (type == SET_B) {
+        while (min % 6 != 0) min++;
+        max -= (max % 6);
     }
 
-    return set;
-}
+    int step = (type == SET_A) ? 2 : 6;
+    int possible = (max - min) / step + 1;
 
-Set* F5_createEven(int count, int min, int max) {
-    if (min % 2 != 0) min++;
-    if (max % 2 != 0) max--;
-
-    int possible = (max - min) / 2 + 1;
-    if (count > possible) {
-        std::cout << "Cannot create even set in this range" << std::endl;
+    if (possible <= 0 || count > possible) {
+        std::cout << "Cannot create set in this range" << std::endl;
         return nullptr;
     }
-
-    Set* set = nullptr;
-    int currentCount = 0;
 
     while (currentCount < count) {
-        int value = min + 2 * (std::rand() % possible);
-        Set* temp = F4_add(set, value);
-        if (temp != set) {
-            set = temp;
-            currentCount++;
-        }
-    }
+        int value = min + step * (std::rand() % possible);
 
-    return set;
-}
-
-Set* F5_createMultipleOf6(int count, int min, int max) {
-    while (min % 6 != 0) min++;
-
-    int possible = (max - min) / 6 + 1;
-    if (count > possible) {
-        std::cout << "Cannot create set of multiples of 6 in this range" << std::endl;
-        return nullptr;
-    }
-
-    Set* set = nullptr;
-    int currentCount = 0;
-
-    while (currentCount < count) {
-        int value = min + 6 * (std::rand() % possible);
         Set* temp = F4_add(set, value);
         if (temp != set) {
             set = temp;
