@@ -19,5 +19,11 @@ Set* F5_create(int count, int min, int max);
 int F6_calculatePower(Set* firstElement);
 std::string F7_out(Set* firstElement, const std::string& delimiter);
 Set* F8_clear(Set* firstElement);
+bool F9_isSubset(Set* A, Set* B);
+bool F10_isEqual(Set* A, Set* B);
+Set* F11_unification(Set* A, Set* B);
+Set* F12_intersection(Set* A, Set* B);
+Set* F13_difference(Set* A, Set* B);
+Set* F14_symmetricDifference(Set* A, Set* B);
 
 #endif //DSD_LABA1_SETLAB1_2_FEDOROV_H

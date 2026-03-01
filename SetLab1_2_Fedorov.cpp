@@ -47,7 +47,6 @@ Set* F5_create(int count, int min, int max) {
         return nullptr;
     }
 
-    std::srand(std::time(nullptr));
     Set* set = nullptr;
     int currentCount = 0;
 
@@ -60,9 +59,7 @@ Set* F5_create(int count, int min, int max) {
             set = temp;
             currentCount++;
         }
-        std::cout << value << " ";
     }
-    std::cout << std::endl;
 
     return set;
 }
@@ -114,4 +111,102 @@ Set* F8_clear(Set* firstElement) {
     }
 
     return current;
+}
+
+bool F9_isSubset(Set* A, Set* B) {
+    if (F2_isEmpty(A))
+        return true;
+
+    if (F2_isEmpty(B))
+        return false;
+
+    Set* currentA = A;
+    while (currentA != nullptr) {
+        bool found = false;
+        Set* currentB = B;
+
+        while (currentB != nullptr) {
+            if (currentA->value == currentB->value) {
+                found = true;
+                break;
+            }
+            currentB = currentB->next;
+        }
+        if (!found)
+            return false;
+
+        currentA = currentA->next;
+    }
+
+    return true;
+}
+
+bool F10_isEqual(Set* A, Set* B) {
+    return F9_isSubset(A, B) && F9_isSubset(B, A);
+}
+
+Set* F11_unification(Set* A, Set* B) {
+    if (F2_isEmpty(A))
+        return B;
+
+    if (F2_isEmpty(B))
+        return A;
+
+    Set* newSet = nullptr;
+    Set* current = A;
+    while (current != nullptr) {
+        newSet = F4_add(newSet, current->value);
+        current = current->next;
+    }
+
+    current = B;
+    while (current != nullptr) {
+        newSet = F4_add(newSet, current->value);
+        current = current->next;
+    }
+
+    return newSet;
+}
+
+Set* F12_intersection(Set* A, Set* B) {
+    if (F2_isEmpty(A) || F2_isEmpty(B))
+        return nullptr;
+
+    Set* newSet = nullptr;
+    Set* current = A;
+    while (current != nullptr) {
+        int value = current->value;
+        if (F3_containsElement(B, value))
+            newSet = F4_add(newSet, value);
+        current = current->next;
+    }
+
+    return newSet;
+}
+
+Set* F13_difference(Set* A, Set* B) {
+    if (F2_isEmpty(A))
+        return nullptr;
+
+    if (F2_isEmpty(B))
+        return A;
+
+    Set* difference = F1_createEmpty();
+    Set* current = A;
+    while (current != nullptr) {
+        int value = current->value;
+        if (!F3_containsElement(B, value))
+            difference = F4_add(difference, value);
+        current = current->next;
+    }
+
+    return difference;
+}
+
+Set* F14_symmetricDifference(Set* A, Set* B) {
+    Set* unionSet = F11_unification(A, B);
+    Set* intersectionSet = F12_intersection(A, B);
+    Set* result = F13_difference(unionSet, intersectionSet);
+
+    return result;
 }
